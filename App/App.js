@@ -14,6 +14,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen} from './screens';
 import {HelpScreen} from './screens';
+import {GameScreen} from './screens';
 
 const Stack = createStackNavigator();
 
@@ -26,6 +27,20 @@ const App = () => {
           component={HomeScreen}
           options={{
             title: 'Inici',
+            headerStyle: {
+              backgroundColor: '#1F1F1F',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Jugar"
+          component={GameScreen}
+          options={{
+            title: 'Jugar',
             headerStyle: {
               backgroundColor: '#1F1F1F',
             },
