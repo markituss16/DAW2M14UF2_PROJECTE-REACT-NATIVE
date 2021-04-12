@@ -15,6 +15,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {HomeScreen} from './screens';
 import {HelpScreen} from './screens';
 import {GameScreen} from './screens';
+import {ScoreScreen} from './screens';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +42,20 @@ const App = () => {
           component={GameScreen}
           options={{
             title: 'Jugar',
+            headerStyle: {
+              backgroundColor: '#1F1F1F',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Puntuacions"
+          component={ScoreScreen}
+          options={{
+            title: 'Puntuacions',
             headerStyle: {
               backgroundColor: '#1F1F1F',
             },

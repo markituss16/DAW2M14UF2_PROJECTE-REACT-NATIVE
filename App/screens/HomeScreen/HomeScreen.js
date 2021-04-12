@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, StatusBar, Text, View} from 'react-native';
+import {Alert, StatusBar, Text, View, BackHandler} from 'react-native';
 import {Component} from 'react';
 import {colors} from '../../config';
 import styles from './style';
@@ -20,16 +20,13 @@ class HomeScreen extends Component {
           />
           <Button
             title={'PUNTUACIONS'}
-            onPress={() => Alert.alert('Button with adjusted color pressed')}
+            onPress={() => this.props.navigation.navigate('Puntuacions')}
           />
           <Button
             title={'AJUDA'}
             onPress={() => this.props.navigation.navigate('Ajuda')}
           />
-          <Button
-            title={'SORTIR'}
-            onPress={() => Alert.alert('Button with adjusted color pressed')}
-          />
+          <Button title={'SORTIR'} onPress={() => BackHandler.exitApp()} />
         </View>
         <View style={styles.versionContainer}>
           <Text style={styles.version}>Marc Palma 2021</Text>
