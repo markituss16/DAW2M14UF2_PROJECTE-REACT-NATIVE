@@ -3,7 +3,7 @@ const colors = {
   inactiveColor: '#A7A7A7',
   tabBackground: '#222222',
   tabBorderColor: '#00000011',
-  backgroundScreens: '#012839',
+  backgroundScreens: '#121212',
   backgroundCanvas: '#00FFFF33',
   primary: '#72F7FF',
   white: '#FFF',

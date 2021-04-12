@@ -23,21 +23,8 @@ const styles = {
   displayContainer: {
     flexDirection: 'row',
   },
-  puzzleContainer: {
-    width: '100%',
-    backgroundColor: colors.backgroundCanvas,
-    paddingVertical: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    borderWidth: 1,
-    borderColor: colors.primary,
-  },
   buttons: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  firstButton: {
-    marginRight: 10,
+    flexDirection: 'column',
   },
   icon: {
     height: 30,

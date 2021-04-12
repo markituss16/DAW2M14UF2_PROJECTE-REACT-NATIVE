@@ -1,28 +1,33 @@
 import React from 'react';
-import {Alert, Button, StatusBar, Text, View} from 'react-native';
+import {Alert, StatusBar, Text, View} from 'react-native';
 import {Component} from 'react';
 import {colors} from '../../config';
 import styles from './style';
+import {Button} from '../../components';
 
 class HomeScreen extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StatusBar
-          backgroundColor={colors.backgroundScreens}
-          barStyle={'light-content'}
-        />
-        <Text style={styles.main}>Joc de puzzles</Text>
+        <StatusBar backgroundColor={colors.backgroundScreens} />
+        <Text style={styles.mainTitle}>Joc de puzzles</Text>
         <View style={styles.divider} />
 
         <View style={styles.buttons}>
           <Button
-            containerStyle={styles.firstButton}
             title={'JUGAR'}
-            onPress={() => Alert.alert('Simple Button pressed')}
+            onPress={() => this.props.navigation.navigate('Home')}
           />
           <Button
             title={'PUNTUACIONS'}
+            onPress={() => Alert.alert('Button with adjusted color pressed')}
+          />
+          <Button
+            title={'AJUDA'}
+            onPress={() => this.props.navigation.navigate('Ajuda')}
+          />
+          <Button
+            title={'SORTIR'}
             onPress={() => Alert.alert('Button with adjusted color pressed')}
           />
         </View>
@@ -33,5 +38,4 @@ class HomeScreen extends Component {
     );
   }
 }
-
 export default HomeScreen;
