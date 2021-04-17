@@ -16,7 +16,7 @@ class HomeScreen extends Component {
         <View style={styles.buttons}>
           <Button
             title={'JUGAR'}
-            onPress={() => this.props.navigation.navigate('Jugar')}
+            onPress={() => this.props.navigation.navigate('ImageSelector')}
           />
           <Button
             title={'PUNTUACIONS'}

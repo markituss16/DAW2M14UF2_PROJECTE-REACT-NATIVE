@@ -12,10 +12,11 @@ import {
 } from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
-import {HomeScreen} from './screens';
-import {HelpScreen} from './screens';
-import {GameScreen} from './screens';
-import {ScoreScreen} from './screens';
+import {HomeScreen} from './App/screens';
+import {HelpScreen} from './App/screens';
+import {GameScreen} from './App/screens';
+import {ScoreScreen} from './App/screens';
+import {ImageScreen} from './App/screens';
 
 const Stack = createStackNavigator();
 
@@ -28,6 +29,20 @@ const App = () => {
           component={HomeScreen}
           options={{
             title: 'Inici',
+            headerStyle: {
+              backgroundColor: '#1F1F1F',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+              fontWeight: 'bold',
+            },
+          }}
+        />
+        <Stack.Screen
+          name="ImageSelector"
+          component={ImageScreen}
+          options={{
+            title: 'Imatges',
             headerStyle: {
               backgroundColor: '#1F1F1F',
             },
