@@ -91,7 +91,7 @@ export default class SlidePuzzle extends Component {
           inversions++;
         }
       }
-      console.log(`${array[i]} possui ${inversions} inversions`);
+      console.log(`${array[i]} té ${inversions} inversions`);
       totalInversions += inversions;
       if (array[i] === array.length) {
         holeLine = parseInt(i / columns, 10) + 1;
@@ -191,7 +191,7 @@ export default class SlidePuzzle extends Component {
     for (let i = 0; i < columns; i++) {
       for (let j = 0; j < columns; j++) {
         if (puzzle[i][j] !== oldValue + 1) {
-          console.log('Ainda não resolvido!');
+          console.log('Puzzle resolt!');
           return false;
         }
         oldValue++;

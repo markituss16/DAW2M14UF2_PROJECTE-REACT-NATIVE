@@ -1,22 +1,12 @@
 import React, {Component} from 'react';
 import {openDatabase} from 'react-native-sqlite-storage';
-import {
-  Alert,
-  Dimensions,
-  Image,
-  Text,
-  TouchableOpacity,
-  View,
-  SafeAreaView,
-  TextInput,
-} from 'react-native';
+import {Alert, Text, TouchableOpacity, View, TextInput} from 'react-native';
 import styles from './styles';
 import SplashScreen from 'react-native-smart-splash-screen';
-import {Button, Display} from '../../components';
+import {Display} from '../../components';
 import SlidePuzzle from '../../containers/SlidePuzzle';
-import {images, colors} from '../../config';
 
-var db = openDatabase({name: 'JugadorsDB.db'});
+var db = openDatabase({name: 'db.Jugadors'});
 
 class GameScreen extends Component {
   constructor(props) {
@@ -41,19 +31,10 @@ class GameScreen extends Component {
 
   componentDidMount() {
     db.transaction(function (txn) {
+      txn.executeSql('DROP TABLE IF EXISTS puntuacions');
       txn.executeSql(
-        "SELECT name FROM sqlite_master WHERE type='table' AND name='Puntuacions_taula'",
+        'CREATE TABLE IF NOT EXISTS puntuacions(ID integer primary key autoincrement, nom text, puntuacio integer);',
         [],
-        function (tx, res) {
-          console.log('item:', res.rows.length);
-          if (res.rows.length == 0) {
-            txn.executeSql('DROP TABLE IF EXISTS Puntuacions_taula', []);
-            txn.executeSql(
-              'CREATE TABLE IF NOT EXISTS Puntuacions_taula(nom VARCHAR(30), puntuacio INT(3))',
-              [],
-            );
-          }
-        },
       );
     });
     SplashScreen.close({
@@ -64,18 +45,19 @@ class GameScreen extends Component {
   }
 
   insertData = () => {
+    console.log(this.state.nom + ' ' + this.state.puntuacio);
     db.transaction(function (tx) {
       tx.executeSql(
-        'INSERT INTO Puntuacions_taula (nom, puntuacio) VALUES (?,?)',
+        'INSERT INTO puntuacions (nom, puntuacio) VALUES (?,?);',
         [this.state.nom, this.state.puntuacio],
-        (tx, results) => {
+        /*(tx, results) => {
           console.log('Results', results.rowsAffected);
           if (results.rowsAffected > 0) {
             Alert.alert('Data Inserted Successfully....');
           } else {
             Alert.alert('Failed....');
           }
-        },
+        },*/
       );
     });
     this.anarRanking();
@@ -107,7 +89,7 @@ class GameScreen extends Component {
   };
 
   render() {
-    const {showNumbers, movements, headerText, showModal} = this.state;
+    const {showNumbers, movements, headerText} = this.state;
     return (
       <View style={styles.container}>
         <View style={styles.displayContainer}>
@@ -138,7 +120,8 @@ class GameScreen extends Component {
         <TextInput
           style={styles.textInputStyle}
           onChangeText={this.handlePuntuacio}
-          placeholder="Entra la puntuacio"
+          placeholder="Entra la puntuació"
+          keyboardType={'numeric'}
         />
         <TouchableOpacity
           style={styles.touchableOpacity}
