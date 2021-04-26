@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import styles from './style';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import {Button} from '../../components';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -104,6 +105,12 @@ class ImageScreen extends Component<any, ImageSelectorState> {
               );
             }}
           />
+          <View style={styles.buttons}>
+            <Button
+              title={'JUGAR'}
+              onPress={() => this.props.navigation.navigate('Jugar')}
+            />
+          </View>
         </View>
       </View>
     );
